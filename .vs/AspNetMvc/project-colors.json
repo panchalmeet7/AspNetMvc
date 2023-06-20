@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "72ac32d1-2d9c-47fb-b28b-84d291cf650e": {
+      "ProjectGuid": "72ac32d1-2d9c-47fb-b28b-84d291cf650e",
+      "DisplayName": "AspNetMvc",
+      "ColorIndex": 0
+    },
+    "da05b52c-7731-4bb4-9dbb-a9fdf48e583b": {
+      "ProjectGuid": "da05b52c-7731-4bb4-9dbb-a9fdf48e583b",
+      "DisplayName": "AspNetMvc.Repository",
+      "ColorIndex": 1
+    },
+    "3db79093-15c8-4215-9b6e-8e949a1630fa": {
+      "ProjectGuid": "3db79093-15c8-4215-9b6e-8e949a1630fa",
+      "DisplayName": "Repository",
+      "ColorIndex": 2
+    },
+    "65a391e4-6c27-44f8-8194-99632bf35cc4": {
+      "ProjectGuid": "65a391e4-6c27-44f8-8194-99632bf35cc4",
+      "DisplayName": "Services",
+      "ColorIndex": 3
+    },
+    "6a692982-4d55-480f-b042-34a4fc666d85": {
+      "ProjectGuid": "6a692982-4d55-480f-b042-34a4fc666d85",
+      "DisplayName": "Entities",
+      "ColorIndex": 4
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 5
+}
