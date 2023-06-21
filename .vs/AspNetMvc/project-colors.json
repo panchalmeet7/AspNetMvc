@@ -30,7 +30,12 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Miscellaneous Files",
       "ColorIndex": -1
+    },
+    "a427b3e2-8f5f-4c62-92f6-d0766182caf2": {
+      "ProjectGuid": "a427b3e2-8f5f-4c62-92f6-d0766182caf2",
+      "DisplayName": "ClassLibrary1",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 5
+  "NextColorIndex": 6
 }

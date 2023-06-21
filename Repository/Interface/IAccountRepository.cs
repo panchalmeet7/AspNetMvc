@@ -8,5 +8,6 @@ namespace Repository.Interface
     public interface IAccountRepository
     {
         void RegisterNewUser(RegistrationViewModel model, string constr);
+        int LoginUser(LoginViewModel model, string constr);
     }
 }

@@ -5,11 +5,13 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMvc", "AspNetMvc\AspNetMvc.csproj", "{72AC32D1-2D9C-47FB-B28B-84D291CF650E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{3DB79093-15C8-4215-9B6E-8E949A1630FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{3DB79093-15C8-4215-9B6E-8E949A1630FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{65A391E4-6C27-44F8-8194-99632BF35CC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{65A391E4-6C27-44F8-8194-99632BF35CC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{6A692982-4D55-480F-B042-34A4FC666D85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{6A692982-4D55-480F-B042-34A4FC666D85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{A427B3E2-8F5F-4C62-92F6-D0766182CAF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6A692982-4D55-480F-B042-34A4FC666D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A692982-4D55-480F-B042-34A4FC666D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A692982-4D55-480F-B042-34A4FC666D85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A427B3E2-8F5F-4C62-92F6-D0766182CAF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A427B3E2-8F5F-4C62-92F6-D0766182CAF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A427B3E2-8F5F-4C62-92F6-D0766182CAF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A427B3E2-8F5F-4C62-92F6-D0766182CAF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

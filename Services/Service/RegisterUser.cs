@@ -18,6 +18,9 @@ namespace Services.Service
         public void Register(RegistrationViewModel model , string constr)
         {
             _accountRepository.RegisterNewUser(model , constr);
+            
         }
+
+
     }
 }

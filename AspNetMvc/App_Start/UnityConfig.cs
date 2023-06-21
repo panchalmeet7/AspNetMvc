@@ -18,7 +18,9 @@ namespace AspNetMvc
             // it is NOT necessary to register your controllers
             
              container.RegisterType<IRegisterUser, RegisterUser>();
+             container.RegisterType<ILoginUser, LoginUser>();
              container.RegisterType<IAccountRepository, AccountRepository>();
+
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
