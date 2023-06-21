@@ -175,3 +175,10 @@ D:\.net\AspNetMvc\AspNetMvc\obj\Debug\AspNetMvc.dll
 D:\.net\AspNetMvc\AspNetMvc\obj\Debug\AspNetMvc.pdb
 D:\.net\AspNetMvc\AspNetMvc\bin\System.Data.SqlClient.dll
 D:\.net\AspNetMvc\AspNetMvc\bin\System.Data.SqlClient.xml
+D:\.net\AspNetMvc\AspNetMvc\bin\Microsoft.Owin.dll
+D:\.net\AspNetMvc\AspNetMvc\bin\Microsoft.Owin.Security.Cookies.dll
+D:\.net\AspNetMvc\AspNetMvc\bin\Microsoft.Owin.Security.dll
+D:\.net\AspNetMvc\AspNetMvc\bin\Owin.dll
+D:\.net\AspNetMvc\AspNetMvc\bin\Microsoft.Owin.xml
+D:\.net\AspNetMvc\AspNetMvc\bin\Microsoft.Owin.Security.xml
+D:\.net\AspNetMvc\AspNetMvc\bin\Microsoft.Owin.Security.Cookies.xml

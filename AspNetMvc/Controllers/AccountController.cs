@@ -1,8 +1,10 @@
 ﻿using Entities.ViewModels;
+using Microsoft.Owin.Security.Cookies;
 using Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -50,6 +52,7 @@ namespace AspNetMvc.Controllers
         }
         #endregion
 
+        // Registration 
         [HttpPost]
         public async Task<ActionResult> Registration(RegistrationViewModel model)
         {
@@ -72,6 +75,7 @@ namespace AspNetMvc.Controllers
 
         /// <param name="model"></param>
         /// <returns> error if email pass does not match </returns>
+        // Login
         [HttpPost]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
@@ -81,6 +85,7 @@ namespace AspNetMvc.Controllers
                 int status = await _loginuser.UserLogin(model, constr);
                 if (status == 1)
                 {
+                    Session["UserID"] = Guid.NewGuid();
                     return RedirectToAction("Test", "Account");
                 }
                 else

@@ -49,13 +49,13 @@ namespace Repository.Repository
         {
             try
             {
-                string password = model.PasswordHash;
-                var encodedData = EncodedPass(password);
+                //string password = model.PasswordHash;
+                //var encodedData = EncodedPass(password);
                 var parameters = new DynamicParameters();
                 parameters.Add("@first_name", model.FirstName);
                 parameters.Add("@last_name", model.LastName);
                 parameters.Add("@email", model.Email);
-                parameters.Add("@password_hash", encodedData);
+                parameters.Add("@password_hash", model.PasswordHash);
                 parameters.Add("@created_at", DateTime.Now);
                 parameters.Add("@role", "USER");
                 var sp = "sp_RegisterUser";
@@ -101,11 +101,11 @@ namespace Repository.Repository
         {
             try
             {
-                string encodepassword = model.ConfirmPasswordHash;
-                var decodedpass = DecodePass(encodepassword);
+                //string encodepassword = model.ConfirmPasswordHash;
+                //var decodedpass = DecodePass(encodepassword);
                 var parameters = new DynamicParameters();
                 parameters.Add("@email", model.Email);
-                parameters.Add("@password_hash", decodedpass);
+                parameters.Add("@password_hash", model.ConfirmPasswordHash);
                 var sp = "sp_loginuser";
                 using (var con = new SqlConnection(constr))
                 {
