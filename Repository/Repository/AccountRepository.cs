@@ -6,6 +6,7 @@ using Dapper;
 using Entities.ViewModels;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace Repository.Repository
 {
@@ -23,7 +24,7 @@ namespace Repository.Repository
 
         #region Decoding the password
         private string DecodePass(string encodepassword)
-        {   
+        {
             byte[] data = Convert.FromBase64String(encodepassword);
             var result = System.Text.Encoding.UTF8.GetString(data);
             return result;
@@ -44,7 +45,7 @@ namespace Repository.Repository
         /// <param name="model"></param>
         /// <param name="constr"></param>
         /// <exception cref="Exception"></exception>
-        public void RegisterNewUser(RegistrationViewModel model, string constr)
+        public async Task RegisterNewUser(RegistrationViewModel model, string constr)
         {
             try
             {
@@ -61,8 +62,8 @@ namespace Repository.Repository
 
                 using (var con = new SqlConnection(constr))
                 {
-                    con.Open();
-                    var execute = con.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
+                    await con.OpenAsync();
+                    var execute = await con.ExecuteAsync(sp, parameters, commandType: CommandType.StoredProcedure);
                 }
 
             }
@@ -72,19 +73,19 @@ namespace Repository.Repository
             }
 
         }
-        
+
         /// <param name="model"></param>
         /// <param name="constr"></param>
         /// <returns>status, 1 if email already exists</returns>
-        public int UserExistsCheck(RegistrationViewModel model, string constr)
+        public async Task<int> UserExistsCheck(RegistrationViewModel model, string constr)
         {
             var param = new DynamicParameters();
             param.Add("@email", model.Email);
             var sps = "sp_emailcheck";
             using (var conn = new SqlConnection(constr))
             {
-                conn.Open();
-                int status = (int)conn.ExecuteScalar(sps, param, commandType: CommandType.StoredProcedure);
+                await conn.OpenAsync();
+                int status = (int)await conn.ExecuteScalarAsync(sps, param, commandType: CommandType.StoredProcedure);
                 return status;
             }
         }
@@ -96,7 +97,7 @@ namespace Repository.Repository
         /// <param name="constr"></param>
         /// <returns> status, if 1 then invalid email and pass </returns>
         /// <exception cref="Exception"></exception>
-        public int LoginUser(LoginViewModel model, string constr)
+        public async Task<int> LoginUser(LoginViewModel model, string constr)
         {
             try
             {
@@ -108,8 +109,8 @@ namespace Repository.Repository
                 var sp = "sp_loginuser";
                 using (var con = new SqlConnection(constr))
                 {
-                    con.Open();
-                    int status = Convert.ToInt32(con.ExecuteScalar(sp, parameters, commandType: CommandType.StoredProcedure));
+                    await con.OpenAsync();
+                    int status = Convert.ToInt32(await con.ExecuteScalarAsync(sp, parameters, commandType: CommandType.StoredProcedure));
                     return status;
                 }
             }

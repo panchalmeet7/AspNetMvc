@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Entities.ViewModels;
+using System.Threading.Tasks;
 
 namespace Services.Service
 {
@@ -15,15 +16,14 @@ namespace Services.Service
             _accountRepository = accountRepository;
         }
 
-        public void Register(RegistrationViewModel model, string constr)
+        public async Task Register(RegistrationViewModel model, string constr)
         {
-            _accountRepository.RegisterNewUser(model, constr);
-
+             await _accountRepository.RegisterNewUser(model, constr);
         }
 
-        public int EmailCheck(RegistrationViewModel model, string constr)
+        public async Task<int> EmailCheck(RegistrationViewModel model, string constr)
         {
-            return _accountRepository.UserExistsCheck(model, constr);
+            return await _accountRepository.UserExistsCheck(model, constr);
         }
 
     }

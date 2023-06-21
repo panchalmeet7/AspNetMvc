@@ -3,6 +3,7 @@ using Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,7 +18,7 @@ namespace AspNetMvc.Controllers
         #endregion
 
         #region Getting Connection String
-        private string connection()
+        public static string connection()
         {
             return System.Configuration.ConfigurationManager.ConnectionStrings["conString"].ToString();
         }
@@ -50,19 +51,19 @@ namespace AspNetMvc.Controllers
         #endregion
 
         [HttpPost]
-        public ActionResult Registration(RegistrationViewModel model)
+        public async Task<ActionResult> Registration(RegistrationViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var constr = connection();
-                int status = _registerUser.EmailCheck(model, constr);
+                int status = await _registerUser.EmailCheck(model, constr);
                 if (status == 1)
                 {
-                    TempData["Error"] = "Email already exists, Please try with another Email!!";
+                    ViewBag.Message = "Email already exists, Please try with another Email!";
                 }
                 else
                 {
-                    _registerUser.Register(model, constr);
+                   await _registerUser.Register(model, constr);
                     return RedirectToAction("Login", "Account");
                 }
             }
@@ -72,19 +73,19 @@ namespace AspNetMvc.Controllers
         /// <param name="model"></param>
         /// <returns> error if email pass does not match </returns>
         [HttpPost]
-        public ActionResult Login(LoginViewModel model)
+        public async Task<ActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var constr = connection();
-                int status = _loginuser.UserLogin(model, constr);
+                int status = await _loginuser.UserLogin(model, constr);
                 if (status == 1)
                 {
                     return RedirectToAction("Test", "Account");
                 }
                 else
                 {
-                    TempData["Error"] = "Invalid Credentials!!";
+                    TempData["Error"] = "Invalid Credentials!";
                     return View();
                 }
             }

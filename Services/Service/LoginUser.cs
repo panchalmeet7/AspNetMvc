@@ -4,6 +4,7 @@ using Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Services.Service
 {
@@ -15,9 +16,9 @@ namespace Services.Service
             _accountRepository = accountRepository;
         }
 
-        public int UserLogin(LoginViewModel model, string constr)
+        public async Task<int> UserLogin(LoginViewModel model, string constr)
         {
-            return _accountRepository.LoginUser(model, constr);
+            return await _accountRepository.LoginUser(model, constr);
         }
     }
 }

@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Services.Interface
 {
     public interface ILoginUser
     {
-        int UserLogin(LoginViewModel model,  string constr);
+        Task<int> UserLogin(LoginViewModel model,  string constr);
     }
 }
