@@ -50,7 +50,7 @@
                                     @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-
+                            <span class="text-danger">@TempData["Error"]</span>
                             <!-- Email input -->
                             <div class="form-outline">
                                 @Html.TextBoxFor(x => x.Email, new { @class = "form-control mt-4", @type = "email" })
@@ -85,27 +85,27 @@
                             </button>
 
                             <!-- Register buttons -->
-                            <div class="text-center">
-                                <p>Already have an Accont?<span asp-controller="Account" asp-action="Login" class="text-primary px-2" style="cursor: pointer">Sign In</span></p>
+                    <div class="text-center">
+                        
+                        <p>Already have an Accont? <span>@Html.ActionLink("Sign In", "Login", "Account", new { area = "" }, new { @class = "text-primary" })</span></p>
+                        <!-- Sign In Link -->
+                        <p>or sign in with:</p>
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="bi bi-facebook fs-3"></i>
+                        </button>
 
-                                <!-- Sign In Link -->
-                                <p>or sign up with:</p>
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="bi bi-facebook fs-3"></i>
-                                </button>
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="bi bi-google fs-3"></i>
+                        </button>
 
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="bi bi-google fs-3"></i>
-                                </button>
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="bi bi-twitter fs-3"></i>
+                        </button>
 
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="bi bi-twitter fs-3"></i>
-                                </button>
-
-                                <button type="button" class="btn btn-link btn-floating mx-1">
-                                    <i class="bi bi-github fs-3 "></i>
-                                </button>
-                            </div>
+                        <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="bi bi-github fs-3 "></i>
+                        </button>
+                    </div>
 
                             @*</form>*@
                         }

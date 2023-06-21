@@ -63,7 +63,7 @@
 
                             <!-- Register buttons -->
                             <div class="text-center">
-                                <p>Dont have an Accont?<span asp-controller="Account" asp-action="Login" class="text-primary px-2" style="cursor: pointer">Sign Up</span></p>
+                                <p>Dont have an Accont?<span> @Html.ActionLink("Sign Up", "Registration", "Account", new { area = "" }, new { @class = "text-primary" }) </span></p>
 
                                 <!-- Sign In Link -->
                                 <p>or sign up with:</p>

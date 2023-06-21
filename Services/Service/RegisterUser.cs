@@ -15,12 +15,16 @@ namespace Services.Service
             _accountRepository = accountRepository;
         }
 
-        public void Register(RegistrationViewModel model , string constr)
+        public void Register(RegistrationViewModel model, string constr)
         {
-            _accountRepository.RegisterNewUser(model , constr);
-            
+            _accountRepository.RegisterNewUser(model, constr);
+
         }
 
+        public int EmailCheck(RegistrationViewModel model, string constr)
+        {
+            return _accountRepository.UserExistsCheck(model, constr);
+        }
 
     }
 }

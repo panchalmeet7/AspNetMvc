@@ -11,34 +11,39 @@ namespace Repository.Repository
 {
     public class AccountRepository : IAccountRepository
     {
+        #region Encoding the password
         private static string EncodedPass(string password)
         {
-            try
-            {
-                byte[] encData_byte = new byte[password.Length];
-                encData_byte = System.Text.Encoding.UTF8.GetBytes(password);
-                string encodedData = Convert.ToBase64String(encData_byte);
-                return encodedData;
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error in base64Encode" + ex.Message);
-            }
+            byte[] encData_byte = new byte[password.Length];
+            encData_byte = System.Text.Encoding.UTF8.GetBytes(password);
+            string encodedData = Convert.ToBase64String(encData_byte);
+            return encodedData;
         }
+        #endregion
 
+        #region Decoding the password
         private string DecodePass(string encodepassword)
-        {
-            System.Text.UTF8Encoding encoder = new System.Text.UTF8Encoding();
-            System.Text.Decoder utf8Decode = encoder.GetDecoder();
-            byte[] todecode_byte = Convert.FromBase64String(encodepassword);
-            int charCount = utf8Decode.GetCharCount(todecode_byte, 0, todecode_byte.Length);
-            char[] decoded_char = new char[charCount];
-            utf8Decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);
-            string result = new String(decoded_char);
+        {   
+            byte[] data = Convert.FromBase64String(encodepassword);
+            var result = System.Text.Encoding.UTF8.GetString(data);
             return result;
+            //int paddingLength = base64String.Length % 4;
+            //if (paddingLength > 0)
+            //{
+            //    base64String += new string('=', 4 - paddingLength);
+            //}
+            //byte[] data = Convert.FromBase64String(encodepassword);
+            //var result = System.Text.Encoding.UTF8.GetString(data);
         }
+        #endregion
 
+        #region Registration Method
+        /// <summary>
+        /// Register New User into DB
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="constr"></param>
+        /// <exception cref="Exception"></exception>
         public void RegisterNewUser(RegistrationViewModel model, string constr)
         {
             try
@@ -53,19 +58,44 @@ namespace Repository.Repository
                 parameters.Add("@created_at", DateTime.Now);
                 parameters.Add("@role", "USER");
                 var sp = "sp_RegisterUser";
+
                 using (var con = new SqlConnection(constr))
                 {
                     con.Open();
                     var execute = con.Execute(sp, parameters, commandType: CommandType.StoredProcedure);
                 }
+
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception(ex.Message);
             }
 
         }
+        
+        /// <param name="model"></param>
+        /// <param name="constr"></param>
+        /// <returns>status, 1 if email already exists</returns>
+        public int UserExistsCheck(RegistrationViewModel model, string constr)
+        {
+            var param = new DynamicParameters();
+            param.Add("@email", model.Email);
+            var sps = "sp_emailcheck";
+            using (var conn = new SqlConnection(constr))
+            {
+                conn.Open();
+                int status = (int)conn.ExecuteScalar(sps, param, commandType: CommandType.StoredProcedure);
+                return status;
+            }
+        }
+        #endregion
 
+        #region Login Method
+
+        /// <param name="model"></param>
+        /// <param name="constr"></param>
+        /// <returns> status, if 1 then invalid email and pass </returns>
+        /// <exception cref="Exception"></exception>
         public int LoginUser(LoginViewModel model, string constr)
         {
             try
@@ -79,14 +109,15 @@ namespace Repository.Repository
                 using (var con = new SqlConnection(constr))
                 {
                     con.Open();
-                    int status = Convert.ToInt32(con.Execute(sp, parameters, commandType: CommandType.StoredProcedure));
+                    int status = Convert.ToInt32(con.ExecuteScalar(sp, parameters, commandType: CommandType.StoredProcedure));
                     return status;
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception(ex.Message);
             }
         }
+        #endregion
     }
 }

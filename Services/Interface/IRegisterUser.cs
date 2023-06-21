@@ -8,5 +8,6 @@ namespace Services.Interface
     public interface IRegisterUser
     {
         void Register(RegistrationViewModel model, string constr);
+        int EmailCheck(RegistrationViewModel model, string constr);
     }
 }

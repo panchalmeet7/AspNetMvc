@@ -9,5 +9,6 @@ namespace Repository.Interface
     {
         void RegisterNewUser(RegistrationViewModel model, string constr);
         int LoginUser(LoginViewModel model, string constr);
+        int UserExistsCheck(RegistrationViewModel model, string constr);
     }
 }

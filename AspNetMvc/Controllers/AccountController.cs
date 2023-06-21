@@ -11,24 +11,27 @@ namespace AspNetMvc.Controllers
 {
     public class AccountController : Controller
     {
+        #region Properties
         private readonly IRegisterUser _registerUser;
         private readonly ILoginUser _loginuser;
+        #endregion
 
+        #region Getting Connection String
         private string connection()
         {
             return System.Configuration.ConfigurationManager.ConnectionStrings["conString"].ToString();
         }
+        #endregion
+
+        #region Constructor
         public AccountController(IRegisterUser registerUser, ILoginUser loginuser)
         {
             _registerUser = registerUser;
             _loginuser = loginuser;
         }
-        // GET: Account
-        public ActionResult Index()
-        {
-            return View();
-        }
+        #endregion
 
+        #region Get Methods
         [HttpGet]
         public ActionResult Registration()
         {
@@ -44,6 +47,7 @@ namespace AspNetMvc.Controllers
         {
             return View();
         }
+        #endregion
 
         [HttpPost]
         public ActionResult Registration(RegistrationViewModel model)
@@ -51,13 +55,22 @@ namespace AspNetMvc.Controllers
             if (ModelState.IsValid)
             {
                 var constr = connection();
-                _registerUser.Register(model, constr);
+                int status = _registerUser.EmailCheck(model, constr);
+                if (status == 1)
+                {
+                    TempData["Error"] = "Email already exists, Please try with another Email!!";
+                }
+                else
+                {
+                    _registerUser.Register(model, constr);
+                    return RedirectToAction("Login", "Account");
+                }
             }
-
-            ModelState.Clear();
             return View();
         }
 
+        /// <param name="model"></param>
+        /// <returns> error if email pass does not match </returns>
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
