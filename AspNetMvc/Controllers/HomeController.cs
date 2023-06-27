@@ -7,12 +7,15 @@ using System.Web.Mvc;
 
 namespace AspNetMvc.Controllers
 {
-    [UserAuthenticationFilter]
+    [ExceptionFilter] //Controller level exception filter
+    //[UserAuthenticationFilter]
     public class HomeController : Controller
     {
+        //[ExceptionFilter] Action method exception filter
         public ActionResult Index()
         {
-            return View();
+            return View("sdfsfsdfsd");
+            //throw new ArgumentOutOfRangeException();
         }
 
         public ActionResult About()
@@ -24,6 +27,17 @@ namespace AspNetMvc.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult TestRange()
+        {
+            int id = 101;
+            if (id > 100)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
 
             return View();
         }

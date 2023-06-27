@@ -35,7 +35,12 @@
       "ProjectGuid": "a427b3e2-8f5f-4c62-92f6-d0766182caf2",
       "DisplayName": "ClassLibrary1",
       "ColorIndex": 5
+    },
+    "d45a7141-ddde-4a7e-b3dc-a1c8b7c23af4": {
+      "ProjectGuid": "d45a7141-ddde-4a7e-b3dc-a1c8b7c23af4",
+      "DisplayName": "EmailService",
+      "ColorIndex": 6
     }
   },
-  "NextColorIndex": 6
+  "NextColorIndex": 7
 }

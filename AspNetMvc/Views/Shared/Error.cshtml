@@ -7,9 +7,9 @@
 <body class="m-5">
     <div class="container-xl text-center">
         <img class="img-fluid d-none d-md-inline-block" src="https://img.freepik.com/free-vector/404-error-with-landscape-concept-illustration_114360-7898.jpg" />
-        <h4 class="mt-5 my-md-2">Page not Found</h4>
-        <h1 class="mt-3 d-none d-md-block"><b>Oops!</b> The page you were looking for doesn't exist.</h1>
-        <h5 class="lead d-none d-md-block">You may have misstyped the address or the page may have moved.</h5>
+        @*<h4 class="mt-5 my-md-2">Page not Found</h4>*@
+        <h1 class="mt-3 d-none d-md-block"><b>Oops!</b> There might be some issue!</h1>
+        <h5 class="lead d-none d-md-block py-4">@ViewData["ErrorMessage"]</h5>
         <button class="btn btn-primary"> @Html.ActionLink("Back To Home", "Login", "Account", new { area = "" }, new { @class = "text-light" }) </button>
     </div>
 </body>

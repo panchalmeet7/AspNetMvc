@@ -7,6 +7,8 @@ using Entities.ViewModels;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace Repository.Repository
 {
@@ -106,6 +108,7 @@ namespace Repository.Repository
                 var parameters = new DynamicParameters();
                 parameters.Add("@email", model.Email);
                 parameters.Add("@password_hash", model.ConfirmPasswordHash);
+
                 var sp = "sp_loginuser";
                 using (var con = new SqlConnection(constr))
                 {

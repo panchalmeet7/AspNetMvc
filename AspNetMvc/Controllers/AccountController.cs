@@ -1,4 +1,5 @@
-﻿using Entities.ViewModels;
+﻿using AspNetMvc.Filters;
+using Entities.ViewModels;
 using Microsoft.Owin.Security.Cookies;
 using Services.Interface;
 using System;
@@ -23,6 +24,7 @@ namespace AspNetMvc.Controllers
         public static string connection()
         {
             return System.Configuration.ConfigurationManager.ConnectionStrings["conString"].ToString();
+            //"Data Source= PCT38\\SQL2019; Integrated Security=true;Initial Catalog= DemoProjectDB; User Id =sa; Password=Tatva@123; "
         }
         #endregion
 
@@ -44,10 +46,28 @@ namespace AspNetMvc.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            if (Session["UserID"] != null)
+            {
+                return RedirectToAction("Test", "Account");
+            }
             return View();
         }
+        [HttpGet]
+        [UserAuthenticationFilter]
+        public ActionResult Test(LoginViewModel model)
+        {
+            if (Session["UserID"] == null)
+            {
+                //return View("Error", "_Layout");
+                return View("~/Views/Shared/Error.cshtml");
+            }
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Test()
         {
+            
             return View();
         }
         #endregion
@@ -66,7 +86,7 @@ namespace AspNetMvc.Controllers
                 }
                 else
                 {
-                   await _registerUser.Register(model, constr);
+                    await _registerUser.Register(model, constr);
                     return RedirectToAction("Login", "Account");
                 }
             }
@@ -97,6 +117,12 @@ namespace AspNetMvc.Controllers
 
             ModelState.Clear();
             return View();
+        }
+
+        public ActionResult LogOut()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Account");
         }
     }
 }

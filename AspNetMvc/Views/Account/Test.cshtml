@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "Test";
 }
-
-<h2>LOGIN SUCCESSFULL!</h2>
+<div class="container-fluid">
+    <h2>LOGIN SUCCESSFULL!</h2>
+    <button class="btn btn-primary"> @Html.ActionLink("Log Out", "LogOut", "Account", new { area = "" }, new { @class = "text-light" })</button>
+</div>
 

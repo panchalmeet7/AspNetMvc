@@ -13,10 +13,17 @@ namespace AspNetMvc
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Multiple Routes 
+            //routes.MapRoute(
+            //    name: "Student",
+            //    url: "students/id",
+            //    defaults: new { controller = "Students", action = "Index" }
+            //);
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
