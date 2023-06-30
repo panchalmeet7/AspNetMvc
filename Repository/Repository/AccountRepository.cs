@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
+using Entities.Models;
 
 namespace Repository.Repository
 {
@@ -97,9 +98,9 @@ namespace Repository.Repository
 
         /// <param name="model"></param>
         /// <param name="constr"></param>
-        /// <returns> status, if 1 then invalid email and pass </returns>
+        /// <returns> Role (ADMIN or USER) </returns>
         /// <exception cref="Exception"></exception>
-        public async Task<int> LoginUser(LoginViewModel model, string constr)
+        public async Task<User> LoginUser(LoginViewModel model, string constr)
         {
             try
             {
@@ -113,8 +114,9 @@ namespace Repository.Repository
                 using (var con = new SqlConnection(constr))
                 {
                     await con.OpenAsync();
-                    int status = Convert.ToInt32(await con.ExecuteScalarAsync(sp, parameters, commandType: CommandType.StoredProcedure));
-                    return status;
+                    User Role = await con.QueryFirstOrDefaultAsync<User>(sp, parameters, commandType: CommandType.StoredProcedure);
+                    return Role;
+
                 }
             }
             catch (Exception ex)

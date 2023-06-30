@@ -1,4 +1,5 @@
-﻿using Entities.ViewModels;
+﻿using Entities.Models;
+using Entities.ViewModels;
 using Repository.Interface;
 using Services.Interface;
 using System;
@@ -16,9 +17,9 @@ namespace Services.Service
             _accountRepository = accountRepository;
         }
 
-        public async Task<int> UserLogin(LoginViewModel model, string constr)
+        public async Task<User> UserLogin(LoginViewModel model, string constr)
         {
             return await _accountRepository.LoginUser(model, constr);
-        }
+            }
     }
 }

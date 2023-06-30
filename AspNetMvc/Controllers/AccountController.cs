@@ -1,4 +1,5 @@
 ﻿using AspNetMvc.Filters;
+using Entities.Models;
 using Entities.ViewModels;
 using Microsoft.Owin.Security.Cookies;
 using Services.Interface;
@@ -52,6 +53,7 @@ namespace AspNetMvc.Controllers
             }
             return View();
         }
+
         [HttpGet]
         [UserAuthenticationFilter]
         public ActionResult Test(LoginViewModel model)
@@ -67,7 +69,7 @@ namespace AspNetMvc.Controllers
         [HttpPost]
         public ActionResult Test()
         {
-            
+
             return View();
         }
         #endregion
@@ -102,16 +104,20 @@ namespace AspNetMvc.Controllers
             if (ModelState.IsValid)
             {
                 var constr = connection();
-                int status = await _loginuser.UserLogin(model, constr);
-                if (status == 1)
+                User Role = await _loginuser.UserLogin(model, constr);
+                if (Role == null)
+                {
+                    TempData["Error"] = "Invalid Credentials!";
+                    return View();
+                }
+                else if (Role.Role == "USER")
                 {
                     Session["UserID"] = Guid.NewGuid();
                     return RedirectToAction("Test", "Account");
                 }
-                else
+                else if (Role.Role == "ADMIN")
                 {
-                    TempData["Error"] = "Invalid Credentials!";
-                    return View();
+                    return RedirectToAction("Test", "Admin");
                 }
             }
 

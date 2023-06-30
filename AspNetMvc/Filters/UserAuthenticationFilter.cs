@@ -12,6 +12,12 @@ namespace AspNetMvc.Filters
         public void OnAuthentication(AuthenticationContext filterContext)
         {
             //Check Session is Empty Then set as Result is HttpUnauthorizedResult 
+
+            //if (!filterContext.HttpContext.User.Identity.IsAuthenticated)
+            //{
+            //    filterContext.Result = new HttpUnauthorizedResult();
+            //}
+
             if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["UserID"])))
             {
                 filterContext.Result = new HttpUnauthorizedResult();

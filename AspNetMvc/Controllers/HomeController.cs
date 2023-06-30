@@ -14,7 +14,7 @@ namespace AspNetMvc.Controllers
         //[ExceptionFilter] Action method exception filter
         public ActionResult Index()
         {
-            return View("sdfsfsdfsd");
+            return View();
             //throw new ArgumentOutOfRangeException();
         }
 

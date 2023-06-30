@@ -1,4 +1,5 @@
-﻿using Entities.ViewModels;
+﻿using Entities.Models;
+using Entities.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Services.Interface
 {
     public interface ILoginUser
     {
-        Task<int> UserLogin(LoginViewModel model,  string constr);
+        Task<User> UserLogin(LoginViewModel model,  string constr);
     }
 }

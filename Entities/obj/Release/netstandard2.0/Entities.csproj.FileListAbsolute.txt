@@ -1,0 +1,17 @@
+D:\.net\AspNetMvc\Entities\bin\Release\netstandard2.0\Entities.deps.json
+D:\.net\AspNetMvc\Entities\bin\Release\netstandard2.0\Entities.dll
+D:\.net\AspNetMvc\Entities\bin\Release\netstandard2.0\Entities.pdb
+D:\.net\AspNetMvc\Entities\bin\Release\netstandard2.0\System.ComponentModel.DataAnnotations.dll
+D:\.net\AspNetMvc\Entities\bin\Release\netstandard2.0\System.Configuration.dll
+D:\.net\AspNetMvc\Entities\bin\Release\netstandard2.0\System.Security.dll
+D:\.net\AspNetMvc\Entities\bin\Release\netstandard2.0\System.ComponentModel.DataAnnotations.xml
+D:\.net\AspNetMvc\Entities\bin\Release\netstandard2.0\System.Configuration.xml
+D:\.net\AspNetMvc\Entities\bin\Release\netstandard2.0\System.Security.xml
+D:\.net\AspNetMvc\Entities\obj\Release\netstandard2.0\Entities.csproj.AssemblyReference.cache
+D:\.net\AspNetMvc\Entities\obj\Release\netstandard2.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\.net\AspNetMvc\Entities\obj\Release\netstandard2.0\Entities.AssemblyInfoInputs.cache
+D:\.net\AspNetMvc\Entities\obj\Release\netstandard2.0\Entities.AssemblyInfo.cs
+D:\.net\AspNetMvc\Entities\obj\Release\netstandard2.0\Entities.csproj.CoreCompileInputs.cache
+D:\.net\AspNetMvc\Entities\obj\Release\netstandard2.0\Entities.csproj.CopyComplete
+D:\.net\AspNetMvc\Entities\obj\Release\netstandard2.0\Entities.dll
+D:\.net\AspNetMvc\Entities\obj\Release\netstandard2.0\Entities.pdb
