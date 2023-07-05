@@ -19,6 +19,8 @@ namespace AspNetMvc.Controllers
         #region Properties
         private readonly IRegisterUser _registerUser;
         private readonly ILoginUser _loginuser;
+        private readonly IGetEmployee _getEmployee;
+
         #endregion
 
         #region Getting Connection String
@@ -30,10 +32,11 @@ namespace AspNetMvc.Controllers
         #endregion
 
         #region Constructor
-        public AccountController(IRegisterUser registerUser, ILoginUser loginuser)
+        public AccountController(IRegisterUser registerUser, ILoginUser loginuser, IGetEmployee getEmployee )
         {
             _registerUser = registerUser;
             _loginuser = loginuser;
+            _getEmployee = getEmployee;
         }
         #endregion
 
@@ -53,9 +56,14 @@ namespace AspNetMvc.Controllers
             }
             return View();
         }
+        [AcionFilter]
+        public ActionResult Action()
+        {
+            return View();
+        }
 
         [HttpGet]
-        [UserAuthenticationFilter]
+        //[UserAuthenticationFilter]
         public ActionResult Test(LoginViewModel model)
         {
             if (Session["UserID"] == null)
@@ -129,6 +137,13 @@ namespace AspNetMvc.Controllers
         {
             Session.Clear();
             return RedirectToAction("Login", "Account");
+        }
+
+        public async Task<JsonResult> GetAllEmployeeData()
+        {
+            var connectionStr = connection();
+            var result = _getEmployee.GetEmployeeData(connectionStr);
+            return Json(result);
         }
     }
 }

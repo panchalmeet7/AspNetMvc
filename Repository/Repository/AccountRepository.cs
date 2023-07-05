@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
 using Entities.Models;
+using System.Web.Mvc;
 
 namespace Repository.Repository
 {
@@ -116,7 +117,6 @@ namespace Repository.Repository
                     await con.OpenAsync();
                     User Role = await con.QueryFirstOrDefaultAsync<User>(sp, parameters, commandType: CommandType.StoredProcedure);
                     return Role;
-
                 }
             }
             catch (Exception ex)
@@ -125,5 +125,17 @@ namespace Repository.Repository
             }
         }
         #endregion
+
+        public async Task GetAllEmployeeData(string connectionStr)
+        {
+            var parameters = new DynamicParameters();
+            var sp = "get_allEmployeeData";
+            using(var con = new SqlConnection(connectionStr))
+            {
+                await con.OpenAsync();
+                var result = await con.QueryAsync(sp, parameters, commandType:CommandType.StoredProcedure);
+                
+            }
+        }
     }
 }

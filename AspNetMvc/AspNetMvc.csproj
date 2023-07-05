@@ -326,6 +326,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\AcionFilter.cs" />
     <Compile Include="Filters\ExceptionFilter.cs" />
     <Compile Include="Filters\UserAuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -377,6 +378,7 @@
     <Content Include="Views\Account\Test.cshtml" />
     <Content Include="Views\Home\TestRange.cshtml" />
     <Content Include="Views\Admin\Test.cshtml" />
+    <Content Include="Views\Account\Action.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

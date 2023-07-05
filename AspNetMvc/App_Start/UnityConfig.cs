@@ -19,6 +19,7 @@ namespace AspNetMvc
             
              container.RegisterType<IRegisterUser, RegisterUser>();
              container.RegisterType<ILoginUser, LoginUser>();
+             container.RegisterType<IGetEmployee, GetEmployee>();
              container.RegisterType<IAccountRepository, AccountRepository>();
 
 

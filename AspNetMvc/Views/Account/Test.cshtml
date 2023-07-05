@@ -2,8 +2,23 @@
 @{
     ViewBag.Title = "Test";
 }
-<div class="container-fluid">
-    <h2>LOGIN SUCCESSFULL!</h2>
+<div class="container-fluid mt-5 text-end">
     <button class="btn btn-primary"> @Html.ActionLink("Log Out", "LogOut", "Account", new { area = "" }, new { @class = "text-light" })</button>
 </div>
 
+
+@Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+<script>
+    $(document).ready(function (e) {
+        $.ajax({
+            url: "/Account/GetAllEmployeeData",
+            type: "GET",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        })
+    });
+</script>

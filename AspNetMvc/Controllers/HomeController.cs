@@ -30,15 +30,9 @@ namespace AspNetMvc.Controllers
 
             return View();
         }
-
+        
         public ActionResult TestRange()
         {
-            int id = 101;
-            if (id > 100)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-
             return View();
         }
     }
